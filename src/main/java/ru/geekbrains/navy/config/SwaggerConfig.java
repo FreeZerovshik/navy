@@ -21,7 +21,6 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("ru.geekbrains.navy.controller"))
-                .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metaData());
     }
@@ -29,7 +28,7 @@ public class SwaggerConfig {
     protected ApiInfo metaData() {
         return new ApiInfo(
                 "NAVY REST API",
-                "Rest API description or Navy project",
+                "Rest API description of Navy project",
                 "1",
                 "Terms of service",
                 new Contact("Me", "", "me@geekbrains.ru"),

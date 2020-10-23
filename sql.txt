@@ -25,7 +25,7 @@ INSERT INTO public.ships ("name",port_id,status) VALUES
 	 ('Туман',1,'PORT'),
 	 ('Буря',1,'PORT'),
 	 ('Сказочный',1,'PORT'),
-	 ('Мария',2,'PORT'),
+	 ('Грозный',2,'PORT'),
 	 ('Восток',2,'PORT'),
 	 ('Кудесник',3,'PORT'),
 	 ('Арктика',NULL,'SEA'),
