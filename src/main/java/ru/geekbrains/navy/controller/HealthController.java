@@ -1,17 +1,16 @@
 package ru.geekbrains.navy.controller;
 
-import org.json.JSONObject;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
+@Controller
 public class HealthController {
 
-    // 200, 500
-    @GetMapping("/health")
+    @RequestMapping(value = "/health", method = RequestMethod.GET)
+    @ResponseBody
     public String getHealth() {
-        final JSONObject jsonObject = new JSONObject();
-        jsonObject.put("started", true);
-        return jsonObject.toString();
+        return "ok";
     }
 }
