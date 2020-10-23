@@ -1,6 +1,5 @@
 package ru.geekbrains.navy.controller;
 
-import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,11 +31,6 @@ public class ShipController {
     //200, 400, 404, 422, 500
     @PostMapping
     public ResponseEntity<String> postShip(
-            @ApiParam(
-                    value = "JSON-структура корабля",
-                    name = "ship",
-                    required = true
-            )
             @RequestBody final Ship ship
     ) {
         return shipService.createShip(ship);

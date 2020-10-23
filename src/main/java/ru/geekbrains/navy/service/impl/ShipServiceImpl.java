@@ -52,7 +52,9 @@ public class ShipServiceImpl implements ShipService {
         final int shipsInPortCount = shipDao.selectShipsCountByPortId(ship.getPortId());
         if (shipsInPortCount < port.getCapacity()) {
             shipDao.insertShip(ship);
-            final Optional<Ship> lastInsertShip = shipDao.selectAllShips().stream().max((s1, s2) -> (int) (s1.getId() - s2.getId()));
+            final Optional<Ship> lastInsertShip = shipDao.selectAllShips()
+                    .stream()
+                    .max((s1, s2) -> (int) (s1.getId() - s2.getId()));
             if (lastInsertShip.isPresent()) {
                 final JSONObject jsonObject = new JSONObject();
                 jsonObject.put("id", lastInsertShip.get().getId());

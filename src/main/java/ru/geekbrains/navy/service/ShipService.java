@@ -13,5 +13,4 @@ public interface ShipService {
     ResponseEntity<String> deleteShip(long id);
     ResponseEntity<ShipStatus> readShipStatus(long id);
     ResponseEntity<ShipStatus> updateShipStatus(long id, Long portId, ShipStatus shipStatus);
-
 }
