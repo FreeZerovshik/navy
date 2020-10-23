@@ -1,10 +1,12 @@
 package ru.geekbrains.navy.dao.impl;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.stereotype.Repository;
 import ru.geekbrains.navy.dao.BaseDao;
 import ru.geekbrains.navy.dao.PortDao;
 import ru.geekbrains.navy.model.entity.Port;
+import ru.geekbrains.navy.model.enums.ShipStatusType;
 import ru.geekbrains.navy.model.mapper.PortMapper;
 
 import java.util.List;

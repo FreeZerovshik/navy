@@ -1,13 +1,10 @@
 package ru.geekbrains.navy.controller;
 
+import io.swagger.annotations.*;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ru.geekbrains.navy.model.dto.PortListDTO;
-import ru.geekbrains.navy.model.dto.SinglePortDTO;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.navy.model.entity.Port;
 import ru.geekbrains.navy.service.PortService;
 
@@ -15,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/ports", produces = "application/json")
+@Api(value = "/ports", tags = {"Порты"})
 public class PortController {
 
     private PortService portService;
@@ -25,14 +23,41 @@ public class PortController {
     }
 
     @GetMapping
-    public ResponseEntity<PortListDTO> getPortList() {
-        return ResponseEntity.ok(portService.getAllPorts());
+    @ApiOperation(
+            value = "Получить сведения о портах",
+            httpMethod = "GET",
+            produces = "application/json",
+            response = List.class,
+            responseContainer = "ResponseEntity"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 500, message = "Внутренняя ошибка")})
+    public ResponseEntity<List<Port>> getAllPorts() {
+        return portService.readAllPorts();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<SinglePortDTO> getPort(
-            @PathVariable final Long id
+    @GetMapping("/{id}/capacity")
+    @ApiOperation(
+            value = "Получить текущую загрузку порта",
+            httpMethod = "GET",
+            produces = "application/json",
+            response = String.class,
+            responseContainer = "ResponseEntity"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Порт не найден"),
+            @ApiResponse(code = 500, message = "Внутренняя ошибка")})
+    public ResponseEntity<String> getPortCapacityInfo(
+            @ApiParam(
+                    value = "id порта",
+                    name = "id",
+                    required = true,
+                    example = "3"
+            )
+            @PathVariable(value = "id") final long id
     ) {
-        return ResponseEntity.ok(portService.getPort(id));
+        return portService.readPortCapacityInfo(id);
     }
 }

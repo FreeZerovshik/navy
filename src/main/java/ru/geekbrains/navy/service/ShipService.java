@@ -1,15 +1,17 @@
 package ru.geekbrains.navy.service;
 
-import ru.geekbrains.navy.model.dto.ShipListDTO;
-import ru.geekbrains.navy.model.dto.SingleShipDTO;
-import ru.geekbrains.navy.model.dto.VoidDTO;
+import org.springframework.http.ResponseEntity;
 import ru.geekbrains.navy.model.entity.Ship;
+import ru.geekbrains.navy.model.entity.ShipStatus;
+
+import java.util.List;
 
 public interface ShipService {
 
-    ShipListDTO getAllShips();
-    SingleShipDTO getShip(long id);
-    VoidDTO updateShip(Ship ship);
-    VoidDTO deleteShip(long id);
-    VoidDTO createShip(Ship ship);
+    ResponseEntity<List<Ship>> readAllShips(String status);
+    ResponseEntity<String> createShip(Ship ship);
+    ResponseEntity<String> deleteShip(long id);
+    ResponseEntity<ShipStatus> readShipStatus(long id);
+    ResponseEntity<ShipStatus> updateShipStatus(long id, Long portId, ShipStatus shipStatus);
+
 }
