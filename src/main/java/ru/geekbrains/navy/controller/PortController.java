@@ -27,8 +27,8 @@ public class PortController {
             value = "Получить сведения о портах",
             httpMethod = "GET",
             produces = "application/json",
-            response = List.class,
-            responseContainer = "ResponseEntity"
+            response = Port.class,
+            responseContainer = "List"
     )
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
@@ -42,8 +42,7 @@ public class PortController {
             value = "Получить текущую загрузку порта",
             httpMethod = "GET",
             produces = "application/json",
-            response = String.class,
-            responseContainer = "ResponseEntity"
+            response = String.class
     )
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),

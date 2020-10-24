@@ -29,7 +29,7 @@ public class SwaggerConfig {
         return new ApiInfo(
                 "NAVY REST API",
                 "Rest API description of Navy project",
-                "1",
+                "1.0.1",
                 "Terms of service",
                 new Contact("Me", "", "me@geekbrains.ru"),
                 "License of API", "", Collections.emptyList());

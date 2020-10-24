@@ -27,8 +27,8 @@ public class ShipController {
             value = "Получить текущие корабли (с возможностью фильтрации)",
             httpMethod = "GET",
             produces = "application/json",
-            response = List.class,
-            responseContainer = "ResponseEntity"
+            response = Ship.class,
+            responseContainer = "List"
     )
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
@@ -51,8 +51,7 @@ public class ShipController {
             value = "Создать новый корабль",
             httpMethod = "POST",
             produces = "application/json",
-            response = String.class,
-            responseContainer = "ResponseEntity"
+            response = String.class
     )
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
@@ -76,8 +75,7 @@ public class ShipController {
             value = "Утилизировать корабль",
             httpMethod = "DELETE",
             produces = "application/json",
-            response = String.class,
-            responseContainer = "ResponseEntity"
+            response = String.class
     )
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
@@ -100,8 +98,7 @@ public class ShipController {
             value = "Узнать местоположение корабля",
             httpMethod = "GET",
             produces = "application/json",
-            response = ShipStatus.class,
-            responseContainer = "ResponseEntity"
+            response = ShipStatus.class
     )
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
@@ -124,8 +121,7 @@ public class ShipController {
             value = "Изменить местоположение корабля",
             httpMethod = "PUT",
             produces = "application/json",
-            response = ShipStatus.class,
-            responseContainer = "ResponseEntity"
+            response = ShipStatus.class
     )
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
